@@ -1,4 +1,54 @@
 \section{Nyúlásmérés}
 
 \subsection{Alakváltozási tenzor}
+\begin{align*}
+	\epsilon_x &= \epsilon_a \\
+	\epsilon_z &= \epsilon_c \\
+	\epsilon_y &= -\frac{\nu}{1-\nu}(\epsilon_x + \epsilon_z)
+\end{align*}
+
+\begin{equation*}
+	\pmb{\epsilon} = \begin{bmatrix}
+		\epsilon_x & 0 & \frac{1}{2}\gamma_{xz} \\
+		0 & \epsilon_y & 0 \\
+		\frac{1}{2}\gamma_{zx} & 0 & \epsilon_z \\
+	\end{bmatrix} = \begin{bmatrix}
+		\num{-5.2e-4} & 0 & \num{-3.4e-4} \\
+		0 & \num{9.42857e-5} & 0 \\
+		\num{-3.4e-4} & 0 & \num{3e-4} \\
+	\end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+	\epsilon_\text{I} = \frac{\Delta V}{V} = \text{tr}(\pmb{\epsilon}) = \epsilon_x + \epsilon_y + \epsilon_z = \num{-1.257143e-4}
+\end{equation*}
+
 \subsection{Hooke-törvény}
+
+\begin{equation*}
+	\pmb{\sigma} = \begin{bmatrix}
+		\sigma_x & 0 & \tau_{xz} \\
+		0 & 0 & 0 \\
+		\tau_{zx} & 0 & \sigma_z
+	\end{bmatrix} = \frac{E}{1+\nu}\left(\pmb{\epsilon} + \frac{\nu}{1-2\nu} \epsilon_I \pmb{E}\right)
+\end{equation*}
+
+\begin{align*}
+	\sigma_x &= \frac{E}{1-2\nu}\left(\epsilon_x + \frac{\nu}{1-2\nu} \epsilon_I\right) \\
+	\sigma_z &= \frac{E}{1-2\nu}\left(\epsilon_z + \frac{\nu}{1-2\nu} \epsilon_I\right) \\
+	\tau_{xz} &= \tau_zx = \frac{E}{1+\nu} \frac{1}{2}\gamma_xz
+\end{align*}
+
+\begin{equation*}
+	\pmb{\sigma} = \begin{bmatrix}
+		-99.231 & 0 & -54.9231 \\
+		0 & 0 & 0 \\
+		-54.9231 & 0 & 33.231
+	\end{bmatrix} \left[\si{\mega\pascal}\right]
+\end{equation*}
+
+\begin{align*}
+	\sigma_\text{I} &= \text{tr}(\pmb{\sigma}) = \mpa{-66} \\
+	\sigma_\text{II} &= \sigma_x \sigma_y + \sigma_x \sigma_z + \sigma_y \sigma_z - \tau_{xy}^2 - \tau_{xz}^2 - \tau_{yz}^2 \\&= \SI{-6314.092275}{[\mega\pascal^2]}\\
+	\sigma_\text{III} &= \text{det}(\pmb{\sigma}) = 0
+\end{align*}
