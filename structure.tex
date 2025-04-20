@@ -1,0 +1,207 @@
+\pgfmathsetmacro\s{.002}
+
+\pgfmathsetmacro\d{58}
+\pgfmathsetmacro\ds{\d * \s * 50}
+
+\pgfmathsetmacro\L{1500}
+\pgfmathsetmacro\Ls{\L * \s}
+
+\pgfmathsetmacro\h{2500}
+\pgfmathsetmacro\hs{\h * \s}
+
+\newcommand{\forcewidth}{2}
+\newcommand{\forcelength}{1.5}
+
+\newcommand{\structurecolor}{lightgray}
+\newcommand{\coordcolor}{orange}
+\newcommand{\normalforcecolor}{blue}
+\newcommand{\sharedforcecolor}{red}
+\newcommand{\reactionforcecolor}{violet}
+\newcommand{\beamforcecolor}{olive}
+
+\newcommand{\coords}{
+	\coordinate (A) at (\Ls, 0);
+	\coordinate (B) at (3 * \Ls, -\hs);
+	\coordinate (C) at (3 * \Ls, 0);
+}
+
+\newcommand{\coordsize}{4pt}
+\newcommand{\pointsone}{
+	\fill[\coordcolor] (A) circle (\coordsize) node[below right] {$A$};
+	\fill[\coordcolor] (C) circle (\coordsize) node[below right] {$C$};
+}
+\newcommand{\pointstwo}{
+	\fill[\coordcolor] (B) circle (\coordsize) node[below right] {$B$};
+	\fill[\coordcolor] (C) circle (\coordsize) node[below right] {$C$};
+}
+\newcommand{\points}{
+	\pointsone
+	\pointstwo
+}
+
+\newcommand{\beamone}{
+	\draw[line width=\ds, \structurecolor] (0, 0) -- (A);
+	\draw[line width=\ds, \structurecolor] (A) -- (C);
+	\fill[\structurecolor] (C) circle (.1);
+}
+
+\newcommand{\beamtwo}{
+	\fill[\structurecolor] (C) circle (.1);
+	\draw[line width=\ds, \structurecolor] (C) -- (B);
+}
+
+\newcommand{\sizewidth}{.1}
+\newcommand{\sizelength}{6}
+\newcommand{\sizesone}{
+	\draw[line width=\sizewidth] (0, 0) -- +(0, \sizelength * 0.35);
+	\draw[line width=\sizewidth] (A) -- +(0, \sizelength * 0.35);
+	\draw[line width=\sizewidth] (2 * \Ls, 0) -- +(0, \sizelength * 0.35);
+	\draw[line width=\sizewidth] (C) -- +(0, \sizelength * 0.35);
+
+        \draw[line width=\sizewidth, Stealth-Stealth, ]
+                (0, \sizelength * 0.35) -- +(\Ls, 0)
+                node[midway, above] {$L$};
+        \draw[line width=\sizewidth, Stealth-Stealth, ]
+                (\Ls, \sizelength * 0.35) -- +(\Ls, 0)
+                node[midway, above] {$L$};
+        \draw[line width=\sizewidth, Stealth-Stealth, ]
+                (2 * \Ls, \sizelength * 0.35) -- +(\Ls, 0)
+                node[midway, above] {$L$};
+
+}
+\newcommand{\sizestwo}{
+	\draw[line width=\sizewidth] (C) -- +(\sizelength * 0.35, 0);
+	\draw[line width=\sizewidth] (B) -- +(\sizelength * 0.35, 0);
+        \draw[line width=\sizewidth, Stealth-Stealth, ]
+                (3*\Ls + \sizelength * 0.35, 0) -- +(0, -\hs)
+                node[midway, right] {$h$};
+}
+\newcommand{\sizes}{
+	\sizesone
+	\sizestwo
+}
+\newcommand{\sizepreview}{
+	\draw[line width=\sizewidth, Bar-Bar] (10, 3) -- +(1000 * \s, 0) node[midway, above] {$\m{1}$};
+}
+
+\newcommand{\convention}{
+        \draw[-Stealth] 
+                (1.5 * \Ls + \Ls, 1.25 * \Ls) -- +(1, 0)
+                node [below] {$x$};
+        \draw[-Stealth] 
+                (1.5 * \Ls + \Ls, 1.25 * \Ls) -- +(0, 1)
+                node [left] {$y$};
+
+        \draw[-Stealth]
+		(2 * \Ls + \Ls, 1.25 * \Ls) arc (0:180:-.5)
+                node [midway, above] {$+$};
+}
+
+\newcommand{\wholestructure}{
+	\begin{figure}[hbt!]
+		\centering
+		\begin{tikzpicture}
+			\coords
+			
+			\sizepreview
+			\sizes
+
+			\beamone
+			\beamtwo
+
+			\points
+		\end{tikzpicture}
+		\caption{Léptékhelyes ábra}
+        \end{figure}
+}
+
+\newcommand{\normalforcesone}{
+        \draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+                (A) -- +(0, \forcelength)
+                node[midway, left] {$A_z$};
+        \draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(2*\Ls, 0) -- +(0, -\forcelength)
+                node[midway, right] {$F$};
+		\draw[line width=\forcewidth * .5, \beamforcecolor, -Stealth] 
+		(0, -.5) arc (90:-75:-.5) node[midway, left] {$M$};
+}
+\newcommand{\reactionforcesone}{
+        \draw[line width=\forcewidth, \reactionforcecolor, -Stealth] 
+		(C) -- +(0, \forcelength)
+                node[midway, right] {$C_z$};
+        \draw[line width=\forcewidth, \reactionforcecolor, -Stealth] 
+		(C) -- +(\forcelength, 0)
+                node[near end, below] {$C_x$};
+}
+\newcommand{\sharedforces}{
+        \fill[\sharedforcecolor, opacity=.4] (2*\Ls, 0.1) rectangle +(\Ls, 1);
+        \draw[line width=.2, \sharedforcecolor, -Stealth] 
+                (2*\Ls + 1, \Ls * 0.25) -- +(0, -.5)
+                node[midway, left] {$p$};
+
+}
+
+\newcommand{\normalforcestwo}{
+	\draw[line width=\forcewidth * .5, \beamforcecolor, -Stealth] 
+		(3*\Ls, -\hs +.5) arc (-90:90:-.5) node[near end, left] {$M^B$};
+}
+\newcommand{\reactionforcestwo}{
+        \draw[line width=\forcewidth, \reactionforcecolor, -Stealth] 
+		(3*\Ls, \forcelength) -- (C)
+                node[midway, right] {$C_z$};
+        \draw[line width=\forcewidth, \reactionforcecolor, -Stealth] 
+		(C) -- +(-\forcelength, 0)
+                node[near end, below] {$C_x$};
+        \draw[line width=\forcewidth, \reactionforcecolor, -Stealth] 
+		(B) -- +(\forcelength, 0)
+                node[near end, below] {$B_x$};
+        \draw[line width=\forcewidth, \reactionforcecolor, -Stealth] 
+		(3*\Ls, -\hs - \forcelength) -- (B)
+                node[near start, left] {$B_z$};
+}
+
+\newcommand{\forcesone}{
+	\sharedforces
+	\normalforcesone
+	\reactionforcesone
+}
+\newcommand{\forcestwo}{
+	\normalforcestwo
+	\reactionforcestwo
+}
+
+\newcommand{\sztaone}{
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\coords
+
+			\convention
+			
+			\sizesone
+
+			\beamone
+		
+			\forcesone
+			\pointsone
+		\end{tikzpicture}
+		\caption{1-es rúd SZTÁ}
+        \end{figure}
+}
+
+\newcommand{\sztatwo}{
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\coords
+			
+			\sizestwo
+
+			\beamtwo
+		
+			\forcestwo
+			\pointstwo
+		\end{tikzpicture}
+		\caption{2-es rúd SZTÁ}
+        \end{figure}
+}
