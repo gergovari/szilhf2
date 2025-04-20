@@ -1,5 +1,80 @@
 \section{Lehajlásfüggvény}
 
 \subsection{Hajlítónyomatéki igénybevételi függvény}
+\newcommand{\mcolor}{cyan}
+{\footnotesize
+        \begin{center}
+                \setlength{\aboverulesep}{0pt}
+                \setlength{\belowrulesep}{0pt}
+                \setlength{\extrarowheight}{.75ex}
+		\begin{tabular}{rccc}
+			\toprule
+			\rowcolor{lightgray}
+			$x$
+			&$0 < x < L$
+			&$L < x < L+R$
+			&$L+R < x < 2L+R$ \\
+			\toprule
+
+			\rowcolor{\mcolor}
+			$M_h$
+			&$-M$
+			&$-M-A_z(x-L)$ 
+			&$-M-A_z(x-L)+F(x-2L)+p(x-2L)\frac{x-2L}{2}$ \\
+
+			\bottomrule
+		\end{tabular}
+	\end{center}
+}
+
 
 \subsection{Rugalmas szál differenciálegyenlete}
+\begin{equation*}
+	w_i^{''}(x) = -\frac{M_{h_i}(x)}{IE}
+\end{equation*}
+
+\subsubsection{Peremfeltételek}
+\begin{align*}
+	w_1(L) &= 0 \\
+	w_2(L) &= 0 \\
+	w_3(3L) &= 0 \\
+	w_1^{'}(L) &= w_2^{'}(L) \\
+	w_2^{'}(2L) &= w_3^{'}(2L) \\
+	w_2(2L) &= w_3(2L) 
+\end{align*}
+
+\begin{align*}
+	&c_1 = -0.049647 \\
+	&c_2 = 0.0606989 \\
+	&c_3 = -0.0359472 \\
+	&c_4 = 0.053849 \\
+	&c_5 = 0.0979194 \\
+	&c_6 = 0.127812 \\
+\end{align*}
+
+\begin{align*}
+	w_1(L) &= 0.0606989 \\
+	w_1(L) &= 0 \\
+	w_2(L) &= 0 \\
+	w_2(2L) &= -0.0263059 \\
+	w_3(2L) &= -0.0263059 \\
+	w_3(3L) &= 0 \\
+\end{align*}
+
+\begin{align*}
+	w_{\text{max}} &= \m{0.06} = \mm{60} \\
+	x_{\text{max}} &= \m{0}
+\end{align*}
+
+\subsubsection{Szögelfordulás}
+
+\begin{equation*}
+	\phi_i(x) = w_i^{'}(x)
+\end{equation*}
+
+\begin{align*}
+	\phi_1(0) &= -0.049647 \\
+	\phi_2(L) &= -0.0312849 \\
+	\phi_2(2L) &= 0.000777027 \\
+	\phi_3(3L) &= 0.0266705
+\end{align*}
