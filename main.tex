@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\usepackage[provide=*, magyar]{babel}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{calc}
+\usepackage{calc}
+
+\usetikzlibrary {arrows.meta}
+\usepgfplotslibrary{fillbetween}
+
+\usepackage{pdfpages}
+
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{multicol}
+
+\input{units}
+\input{custom}
+
+\input{title}
+%\input{structure}%
+
+\begin{document}
+	\pagenumbering{gobble}
+	
+	\input{exercise}
+
+	\maketitle
+	\rule{0pt}{50pt}
+	\begin{figure}[hbt!]
+		\centering
+		\includegraphics[scale=1.75]{./images/cauchy_stress_components.png}
+		\caption{Cauchy feszültségi tenzor}
+	\end{figure}
+
+	\newpage
+	\pagenumbering{arabic}
+	
+	\input{reactions}
+	\newpage
+
+	\input{rugalmas}
+	\newpage
+
+	\input{kihajlas}
+	\newpage
+
+	\input{nyulasmeres}
+	\newpage
+
+	\input{fofeszultsegek}
+	\newpage
+
+	\input{pontbelifeszultseg}
+	\newpage
+
+	\input{pontbelienergia}
+	\newpage
+\end{document}
