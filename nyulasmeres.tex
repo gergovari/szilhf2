@@ -47,6 +47,38 @@
 	\end{bmatrix} \left[\si{\mega\pascal}\right]
 \end{equation*}
 
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[
+			view={120}{30},
+			width=\textwidth,
+			clip=false,
+			axis lines=center, 
+			xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
+			axis equal image,
+			xmin=0, xmax=2,
+			ymin=0, ymax=2,
+			zmin=0, zmax=2,
+			xticklabel=\empty,
+			yticklabel=\empty,
+			zticklabel=\empty,
+			tick style={draw=none}
+			]
+			\addplot3[black] coordinates {(0,0,0) (1,0,0) (1,1,0) (0,1,0) (0,0,0)};
+			\addplot3[black] coordinates {(0,0,1) (1,0,1) (1,1,1) (0,1,1) (0,0,1)};
+			\addplot3[black] coordinates {(0,0,0) (0,0,1)};
+			\addplot3[black] coordinates {(1,0,0) (1,0,1)};
+			\addplot3[black] coordinates {(1,1,0) (1,1,1)};
+			\addplot3[black] coordinates {(0,1,0) (0,1,1)};
+
+			\addplot3[red, -Stealth] coordinates {(.8, 0, .2) (.2, 0, .2)} node[midway, above, font=\tiny, rotate=40] {$\sigma_x = \mpa{-99.231}$};
+			\addplot3[red, -Stealth] coordinates {(.5, .5, 1) (.5, .5, 1.5)} node[near end, right, font=\tiny, rotate=0] {$\sigma_z = \mpa{33.231}$};
+			\addplot3[red, -Stealth] coordinates {(.8, .8, 1) (.2, .8, 1)} node[midway, below, font=\tiny, rotate=40] {$\tau_{zx} = \mpa{-54.9231}$};
+			\addplot3[red, -Stealth] coordinates {(.5, .2, 0) (.5, .2, -.5)} node[near end, below right, font=\tiny] {$\tau_{xz} = \mpa{-54.9231}$};
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
+
 \begin{align*}
 	\sigma_\text{I} &= \text{tr}(\pmb{\sigma}) = \mpa{-66} \\
 	\sigma_\text{II} &= \sigma_x \sigma_y + \sigma_x \sigma_z + \sigma_y \sigma_z - \tau_{xy}^2 - \tau_{xz}^2 - \tau_{yz}^2 \\&= \SI{-6314.092275}{[\mega\pascal^2]}\\
