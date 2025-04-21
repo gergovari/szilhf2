@@ -27,6 +27,39 @@
 	\end{center}
 }
 
+\pgfmathsetmacro\M{2}
+\pgfmathsetmacro\Az{1.98958}
+\pgfmathsetmacro\p{1.75}
+\pgfmathsetmacro\Cz{4.63542}
+
+\begin{center}
+	\begin{tikzpicture}
+                \begin{axis}[
+                        height={100},
+                        width={272.5},
+			xlabel={$x \m{}$},
+                        ylabel={$M_h(x) \knm{}$},
+                        axis lines=left,
+                ]
+                        \addplot [
+                                domain=0:1.5,
+                                \mcolor
+                        ]
+                                {-\M};
+                        \addplot [
+				domain=1.5:2*1.5,
+                                \mcolor
+                        ]
+                                {-\M-\Az*(x-1.5)};
+                        \addplot [
+                                domain=2*1.5:3*1.5,
+                                \mcolor
+                        ]
+                                {\Cz*((3*1.5)-x)- \p*(((3*1.5)-x)^2)/2};
+                \end{axis}
+        \end{tikzpicture}
+\end{center}
+
 
 \subsection{Rugalmas szál differenciálegyenlete}
 \begin{equation*}

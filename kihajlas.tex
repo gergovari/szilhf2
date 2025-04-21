@@ -1,6 +1,39 @@
 \section{2-es rúd méretezése kihajlásra}
 
 \subsection{Kritikus feszültség - karcsúság diagram}
+\begin{center}
+        \begin{tikzpicture}
+                \begin{axis}[
+                        axis lines = left,
+			xlabel={$\lambda [-]$},
+			ylabel={$\sigma_\text{kr}(\lambda) \mpa{}$},
+			ymin=0, ymax=250,
+			xmin=0, xmax=200
+                ]
+                        \addplot [
+                                domain=0:59.65,
+                                red
+                        ]
+                                {240};
+                        \addplot [
+                                domain=59.65:105,
+                                red
+                        ]
+                                {308-1.14*x};
+                        \addplot [
+                                domain=105:200,
+                                red
+                        ]
+				{19771.5/x};
+			\addplot[only marks, mark=*] coordinates {(59.65, 239.99)};
+			\addplot[only marks, mark=*] coordinates {(105, 188.3)};
+			\node at (59.65 -20, 239.99 -20) {$(59.65; 239.99)$};
+			\node at (105 + 30, 188.3) {$(105; 188.3)$};
+
+                \end{axis}
+        \end{tikzpicture}
+\end{center}
+
 \begin{align*}
 	\sigma_\text{F} &= \mpa{240} \\
 	\lambda_0 &= 150 \\ \\
