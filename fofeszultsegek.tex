@@ -13,9 +13,9 @@
 \end{align*}
 
 \begin{align*}
-	&x(\sigma_x; \left[\tau_{xz}\right]) = (-99.231; 54.9231) \\
-    	&y(\sigma_y; 0) = (0; 0) \\
-	&z(\sigma_z; \left[\tau_{xz}\right]) = (33.231; 54.9231) \\
+	&X(\sigma_x; \left[\tau_{xz}\right]) = (-99.231; 54.9231) \\
+    	&Y(\sigma_y; 0) = (0; 0) \\
+	&Z(\sigma_z; \left[\tau_{xz}\right]) = (33.231; 54.9231) \\
 \end{align*}
 
 \begin{align*}
@@ -29,6 +29,29 @@
 		-119.04122
 	\end{cases}
 \end{align*}
+
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[
+			axis lines=middle,
+			clip=false,
+			axis equal image,
+			xlabel = {$\sigma \mpa{}$},
+			ylabel = {$\tau \mpa{}$},
+		]
+		\addplot[only marks, mark=*] coordinates {(-99.231, 54.9231)} node [above] {$X$};
+		\addplot[only marks, mark=*] coordinates {(0,0)} node [below] {$Y / \sigma_2$};
+		\addplot[only marks, mark=*] coordinates {(33.231, 54.9231)} node [above] {$Z$};
+
+		\addplot[only marks, mark=*] coordinates {(-119.04122, 0)} node [below] {$\sigma_3$};
+		\addplot[only marks, mark=*] coordinates {(54.04122, 0)} node [below] {$\sigma_1$};
+
+		\addplot[domain=-119.04122:53.04122, samples=100, smooth, red] {sqrt((86.04122)^2-(x + 33)^2)};
+		\addplot[domain=-119.04122:0, samples=100, smooth, red] {sqrt((59.52061)^2-(x + 59.52061)^2)};
+		\addplot[domain=0:53.04122, samples=100, smooth, red] {sqrt((26.52061)^2-(x - 26.52061)^2)};
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
 
 \subsection{Főirányok}
 \begin{align*}
