@@ -1,6 +1,19 @@
 \section{2-es rúd méretezése kihajlásra}
 
-\subsection{Kritikus feszültség - karcsúság diagram}
+\subsection{Kritikusfeszültség - karcsúság diagram}
+
+\begin{align*}
+	\sigma_\text{F} &= \mpa{240} \\
+	\lambda_0 &= 150 \\ \\
+	\sigma_\text{kr}(\lambda) &= 308 - 1.14\lambda
+\end{align*}
+
+\begin{align*}
+	&\sigma_\text{kr}(\lambda_0) = 188.3 \\
+	&\sigma_\text{kr}(\lambda_1) = \sigma_\text{F} \Rightarrow \lambda_1 = 59.65
+\end{align*}
+
+A kezdeti szakaszon $\lambda$-tól független konstans $\sigma_\text{F}$ a kritikusfeszültség. A Tetmajer-egyenes két szélsőértéke az Euler kezdetét jelentő $\lambda_0$ valamit $\lambda_1$ ahol az előbbi egyenessel számolt feszültség eléri a folyáshatárt.
 \begin{center}
         \begin{tikzpicture}
                 \begin{axis}[
@@ -29,29 +42,20 @@
 			\addplot[only marks, mark=*] coordinates {(105, 188.3)};
 			\node at (59.65 -20, 239.99 -20) {$(59.65; 239.99)$};
 			\node at (105 + 30, 188.3) {$(105; 188.3)$};
-
                 \end{axis}
         \end{tikzpicture}
 \end{center}
 
-\begin{align*}
-	\sigma_\text{F} &= \mpa{240} \\
-	\lambda_0 &= 150 \\ \\
-	\sigma_\text{kr}(\lambda) &= 308 - 1.14\lambda
-\end{align*}
-
-\begin{align*}
-	&\sigma_\text{kr}(\lambda_0) = 188.3 \\
-	&\sigma_\text{kr}(\lambda_1) = \sigma_\text{F} \Rightarrow \lambda_1 = 59.65
-\end{align*}
-
 \subsection{Minimális falvastagság}
+A minimális falvastagság számítása függ attól épp melyik tartományba esik a rúd amit csak a falvastagságból tudnánk, ezért feltételezzük hogy a rúd az Euler-tartományba esik karcsúság szempontjából. A $c$ szorzó az egyenértékű hosszhoz abból származik hogy a rúd alul be van fogva, felül pedig nincs akadályozva a kihajlás.
+
 \begin{align*}
 	c &= 2 \\
 	h_0 &= ch = \m{5} \\
 	F_t = 3\left|B_z\right| &= \left(\frac{\pi}{h_0}\right)^2 I_2 E 
 \end{align*}
 
+A keresztmetszet másodrendű nyomatéka függ a geometriától.
 \begin{align*}
 	I_2 &= \frac{d^4 \pi}{64} - \frac{(d-2t_\text{min})^4 \pi}{64} \\
 	t_\text{min} &= 2.49254 \approx \mm{2.5}
@@ -62,3 +66,4 @@
 	i_2 &= \sqrt{\frac{I_2}{A}} \\ \\
 	\lambda &= \frac{h_0}{i_2} = 254.886
 \end{align*}
+A karcsúság az Euler-tartományba esik, tehát feltételezésünk beigazolódott.
