@@ -20,7 +20,7 @@
 			$M_h$
 			&$-M$
 			&$-M-A_z(x-L)$ 
-			&$-M-A_z(x-L)+F(x-2L)+p(x-2L)\frac{x-2L}{2}$ \\
+			&$-C_z(3L-x) + p\frac{(3L-x)^2}{2}$ \\
 
 			\bottomrule
 		\end{tabular}
@@ -55,7 +55,7 @@
                                 domain=2*1.5:3*1.5,
                                 \mcolor
                         ]
-                                {\Cz*((3*1.5)-x)- \p*(((3*1.5)-x)^2)/2};
+                                {-\Cz*((3*1.5)-x)+ \p*(((3*1.5)-x)^2)/2};
                 \end{axis}
         \end{tikzpicture}
 \end{center}
@@ -65,6 +65,8 @@
 \begin{equation*}
 	w_i^{''}(x) = -\frac{M_{h_i}(x)}{IE}
 \end{equation*}
+
+Mivel a hajlítónyomatéki függvényünk három részből áll, itt is követnünk kell ezt.
 
 \begin{align*}
 	w_1^{''}(x) &= 0.0122414 \\
@@ -78,7 +80,77 @@
 	w_3(x) &= c_6 + c_5 x + 0.00961146x^2 + 0.00330475x^3 - 0.000446301x^4
 \end{align*}
 
+\pgfmathsetmacro\cone{-0.049647}
+\pgfmathsetmacro\ctwo{0.0606989}
+\pgfmathsetmacro\cthree{-0.0359472}
+\pgfmathsetmacro\cfour{0.053849}
+\pgfmathsetmacro\cfive{0.0979194}
+\pgfmathsetmacro\csix{0.127812}
+
+\begin{center}
+	\begin{tikzpicture}
+                \begin{axis}[
+			xlabel={$x \m{}$},
+			ylabel={$w_i(x) \mm{}$},
+                        axis lines=left,
+                ]
+                        \addplot [
+                                domain=0:1.5,
+                                \mcolor
+                        ]
+                                {\ctwo + \cone * x + 0.0061207*x^2};
+                        \addplot [
+				domain=1.5:2*1.5,
+                                \mcolor
+                        ]
+                                {\cfour + \cthree * x - 0.00301252*x^2 + 0.00202969*x^3};
+                        \addplot [
+                                domain=2*1.5:3*1.5,
+                                \mcolor
+                        ]
+			{\csix + \cfive * x + 0.00961146*x^2 + 0.00330475*x^3 - 0.000446301 * x^4};
+			\addplot[only marks, mark=*] coordinates {(0, 0.0606989)};
+			\addplot[only marks, mark=*] coordinates {(1.5, 0)};
+			\addplot[only marks, mark=*] coordinates {(1.5*2, -0.0263059)};
+			\addplot[only marks, mark=*] coordinates {(1.5*3, -0)};
+                \end{axis}
+        \end{tikzpicture}
+\end{center}
+
+\begin{center}
+	\begin{tikzpicture}
+                \begin{axis}[
+			xlabel={$x \m{}$},
+			ylabel={$\phi_i(x) \mm{}$},
+                        axis lines=left,
+                ]
+                        \addplot [
+                                domain=0:1.5,
+                                red
+                        ]
+                                {\cone + 0.0122414*x};
+                        \addplot [
+				domain=1.5:2*1.5,
+                                red
+                        ]
+                                {\cthree - 0.00602503*x + 0.00608881*x^2};
+                        \addplot [
+                                domain=2*1.5:3*1.5,
+                                red
+                        ]
+			{\cfive + 0.0192229*x + 0.00991425*x^2-0.0017852*x^3};
+			\addplot[only marks, mark=*] coordinates {(0, -0.049647)};
+			\addplot[only marks, mark=*] coordinates {(1.5, -0.0312849)};
+			\addplot[only marks, mark=*] coordinates {(1.5*2, 0.000777027)};
+			\addplot[only marks, mark=*] coordinates {(1.5*3, 0.0266705)};
+                \end{axis}
+        \end{tikzpicture}
+\end{center}
+
 \subsubsection{Peremfeltételek}
+
+Tudjuk hogy $x = L$ és $x = 3L$-ben a lehajlás értéke zérus, valamint a rúd folytonossága miatt feltételezzük hogy az egybeeső pontok érték az elhajlásnál és szögelfordulásnál megegyezik
+
 \begin{align*}
 	w_1(L) &= 0 \\
 	w_2(L) &= 0 \\
@@ -98,13 +170,15 @@
 \end{align*}
 
 \begin{align*}
-	w_1(L) &= 0.0606989 \\
+	w_1(0) &= 0.0606989 \\
 	w_1(L) &= 0 \\
 	w_2(L) &= 0 \\
 	w_2(2L) &= -0.0263059 \\
 	w_3(2L) &= -0.0263059 \\
 	w_3(3L) &= 0 \\
 \end{align*}
+
+Lehajlásfüggvény szélsőértéke ott lehet ahol a szögelfordulás nulla: a rúd szélén.
 
 \begin{align*}
 	w_{\text{max}} &= \m{0.06} = \mm{60} \\
