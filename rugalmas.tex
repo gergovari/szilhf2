@@ -35,8 +35,6 @@
 \begin{center}
 	\begin{tikzpicture}
                 \begin{axis}[
-                        height={100},
-                        width={272.5},
 			xlabel={$x \m{}$},
                         ylabel={$M_h(x) \knm{}$},
                         axis lines=left,
@@ -60,6 +58,7 @@
         \end{tikzpicture}
 \end{center}
 
+\newpage
 
 \subsection{Rugalmas szál differenciálegyenlete}
 \begin{equation*}
@@ -117,35 +116,7 @@ Mivel a hajlítónyomatéki függvényünk három részből áll, itt is követn
         \end{tikzpicture}
 \end{center}
 
-\begin{center}
-	\begin{tikzpicture}
-                \begin{axis}[
-			xlabel={$x \m{}$},
-			ylabel={$\phi_i(x) \mm{}$},
-                        axis lines=left,
-                ]
-                        \addplot [
-                                domain=0:1.5,
-                                red
-                        ]
-                                {\cone + 0.0122414*x};
-                        \addplot [
-				domain=1.5:2*1.5,
-                                red
-                        ]
-                                {\cthree - 0.00602503*x + 0.00608881*x^2};
-                        \addplot [
-                                domain=2*1.5:3*1.5,
-                                red
-                        ]
-			{\cfive + 0.0192229*x + 0.00991425*x^2-0.0017852*x^3};
-			\addplot[only marks, mark=*] coordinates {(0, -0.049647)};
-			\addplot[only marks, mark=*] coordinates {(1.5, -0.0312849)};
-			\addplot[only marks, mark=*] coordinates {(1.5*2, 0.000777027)};
-			\addplot[only marks, mark=*] coordinates {(1.5*3, 0.0266705)};
-                \end{axis}
-        \end{tikzpicture}
-\end{center}
+\newpage
 
 \subsubsection{Peremfeltételek}
 
@@ -185,6 +156,8 @@ Lehajlásfüggvény szélsőértéke ott lehet ahol a szögelfordulás nulla: a 
 	x_{\text{max}} &= \m{0}
 \end{align*}
 
+\newpage
+
 \subsubsection{Szögelfordulás}
 
 \begin{equation*}
@@ -197,3 +170,33 @@ Lehajlásfüggvény szélsőértéke ott lehet ahol a szögelfordulás nulla: a 
 	\phi_2(2L) &= 0.000777027 \\
 	\phi_3(3L) &= 0.0266705
 \end{align*}
+
+\begin{center}
+	\begin{tikzpicture}
+                \begin{axis}[
+			xlabel={$x \m{}$},
+			ylabel={$\phi_i(x) \mm{}$},
+                        axis lines=left,
+                ]
+                        \addplot [
+                                domain=0:1.5,
+                                red
+                        ]
+                                {\cone + 0.0122414*x};
+                        \addplot [
+				domain=1.5:2*1.5,
+                                red
+                        ]
+                                {\cthree - 0.00602503*x + 0.00608881*x^2};
+                        \addplot [
+                                domain=2*1.5:3*1.5,
+                                red
+                        ]
+			{\cfive + 0.0192229*x + 0.00991425*x^2-0.0017852*x^3};
+			\addplot[only marks, mark=*] coordinates {(0, -0.049647)};
+			\addplot[only marks, mark=*] coordinates {(1.5, -0.0312849)};
+			\addplot[only marks, mark=*] coordinates {(1.5*2, 0.000777027)};
+			\addplot[only marks, mark=*] coordinates {(1.5*3, 0.0266705)};
+                \end{axis}
+        \end{tikzpicture}
+\end{center}
