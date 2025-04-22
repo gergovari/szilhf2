@@ -107,7 +107,7 @@ Mivel a hajlítónyomatéki függvényünk három részből áll, itt is követn
                                 domain=2*1.5:3*1.5,
                                 \mcolor
                         ]
-			{\csix + \cfive * x + 0.00961146*x^2 + 0.00330475*x^3 - 0.000446301 * x^4};
+			{\csix - \cfive * x + 0.00961146*x^2 + 0.00330475*x^3 - 0.000446301 * x^4};
 			\addplot[only marks, mark=*] coordinates {(0, 0.0606989)};
 			\addplot[only marks, mark=*] coordinates {(1.5, 0)};
 			\addplot[only marks, mark=*] coordinates {(1.5*2, -0.0263059)};
@@ -192,7 +192,7 @@ Lehajlásfüggvény szélsőértéke ott lehet ahol a szögelfordulás nulla: a 
                                 domain=2*1.5:3*1.5,
                                 red
                         ]
-			{\cfive + 0.0192229*x + 0.00991425*x^2-0.0017852*x^3};
+			{-\cfive + 0.0192229*x + 0.00991425*x^2-0.0017852*x^3};
 			\addplot[only marks, mark=*] coordinates {(0, -0.049647)};
 			\addplot[only marks, mark=*] coordinates {(1.5, -0.0312849)};
 			\addplot[only marks, mark=*] coordinates {(1.5*2, 0.000777027)};
